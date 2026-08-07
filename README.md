@@ -156,7 +156,7 @@ All state stored in `zeroclaw/memory/`:
 
 - **Program ID**: `8u17EnuW66yfRybQY6vGjeTnASeDyxyT6QesPetRtJxk`
 - **RPC**: `https://api.devnet.solana.com`
-- **Explorer**: https://explorer.solana.com/?cluster=devnet
+- **Explorer**: https://explorer.solana.com/address/8u17EnuW66yfRybQY6vGjeTnASeDyxyT6QesPetRtJxk?cluster=devnet
 
 ## Demo Keypairs
 
