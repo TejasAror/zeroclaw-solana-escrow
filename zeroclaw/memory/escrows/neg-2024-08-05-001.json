@@ -1,0 +1,86 @@
+{
+  "success": true,
+  "escrow_pda": "EscrowAddressHere123456789",
+  "transaction_signature": "InitTxSignatureHere123456789",
+  "agreement_hash": "10c150844cb933e197743da39559d099c5fbf84a27f88d87622a644811f82b09",
+  "amount": 500000000,
+  "buyer": "AVV2NRakjMu8p4Y6GH42m2rqs4aNxWwrdpsqg6LyjbL7",
+  "seller": "9vLzRq9NfP2GmJ7QwE8YxK4VcT3WbHsN1M6uP5jR2sAq",
+  "escrow_status": "Pending",
+  "vault_address": "VaultAddressHere123456789",
+  "token_vault_address": null,
+  "token_mint": null,
+  "expires_at": 1800000000,
+  "created_at": "2026-08-05T10:14:46.770901",
+  "slot": 123456789,
+  "confirmations": 32,
+  "error_message": null,
+  "error_code": null,
+  "memory_stored": true,
+  "original_agreement": {
+    "price": 500000000,
+    "asset": "gpu-a100-1h",
+    "asset_type": "compute",
+    "delivery_requirements": {
+      "method": "api",
+      "deadline": 1800000000,
+      "verification": "automatic",
+      "details": "GPU compute access via API endpoint"
+    },
+    "payment_amount": 500000000,
+    "payment_token": "SOL",
+    "deadlines": {
+      "delivery": 1800000000,
+      "payment": 1800000000,
+      "dispute_window": 1800000000,
+      "expiration": 1800000000
+    },
+    "cancellation_policy": {
+      "buyer_can_cancel": true,
+      "seller_can_cancel": true,
+      "cancellation_window_seconds": 3600,
+      "refund_policy": "full",
+      "penalty_basis_points": 0
+    },
+    "settlement_conditions": {
+      "auto_release_on_delivery": true,
+      "require_buyer_confirmation": true,
+      "dispute_resolution": "mutual",
+      "preimage_reveal_required": false
+    },
+    "buyer": "AVV2NRakjMu8p4Y6GH42m2rqs4aNxWwrdpsqg6LyjbL7",
+    "seller": "9vLzRq9NfP2GmJ7QwE8YxK4VcT3WbHsN1M6uP5jR2sAq",
+    "marketplace_id": "finality-marketplace-v1",
+    "negotiation_id": "neg-2024-08-05-001",
+    "timestamp": 1722835200,
+    "version": 1
+  },
+  "human_approval": {
+    "approved": true,
+    "approver": "human-operator-1",
+    "timestamp": 1722835260,
+    "signature": "approval-sig-abc123"
+  },
+  "escrow_address": "EscrowAddressHere123456789",
+  "buyer_keypair_path": "/tmp/test_buyer_keypair.json",
+  "escrow_account": {
+    "buyer": "AVV2NRakjMu8p4Y6GH42m2rqs4aNxWwrdpsqg6LyjbL7",
+    "seller": "9vLzRq9NfP2GmJ7QwE8YxK4VcT3WbHsN1M6uP5jR2sAq",
+    "amount": 500000000,
+    "agreementHash": [16, 193, 80, 132, 76, 185, 51, 225, 151, 116, 61, 163, 149, 89, 208, 153, 197, 251, 132, 42, 120, 109, 100, 72, 39, 136, 141, 135, 98, 42, 100, 72, 89],
+    "status": {
+      "Pending": null
+    },
+    "isSol": true,
+    "tokenMint": null,
+    "expiresAt": 1800000000,
+    "bump": 255,
+    "vaultBump": 254
+  },
+  "settlement_status": "pending",
+  "verification_timestamp": null,
+  "verification_signature": null,
+  "verification_id": null,
+  "delivery_evidence": null,
+  "buyer_approval": null
+}

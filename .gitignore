@@ -1,0 +1,28 @@
+# Rust
+target/
+Cargo.lock
+
+# Solana
+.solana/
+.anchor/
+test-ledger/
+phantom-keypair.json
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Logs
+*.log

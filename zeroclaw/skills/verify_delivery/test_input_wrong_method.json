@@ -1,0 +1,18 @@
+{
+  "negotiation_id": "neg-2024-08-05-001",
+  "delivery_evidence": {
+    "method": "physical",
+    "verification": "manual",
+    "submitted_at": 1785917160,
+    "details": "Wrong delivery method",
+    "verifier_info": "John Doe"
+  },
+  "buyer_confirmation": {
+    "approved": true,
+    "approved_at": 1785917200,
+    "buyer_signature": "buyer_approval_sig_xyz789",
+    "notes": "Delivery verified"
+  },
+  "force_verification": false,
+  "buyer_keypair_path": "/tmp/test_buyer_keypair.json"
+}

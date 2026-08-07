@@ -1,0 +1,4 @@
+{
+  "escrow_id": "negotiation_test_123",
+  "buyer_keypair_path": "/tmp/test_buyer_keypair.json"
+}

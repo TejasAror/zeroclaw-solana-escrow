@@ -1,0 +1,173 @@
+{
+  "buyer_request": {
+    "buyer": "DcX5q52VJeRpZZfoX4fk6sqGpxGsQkAFCWuTJyg5WY3X",
+    "asset": "gpu-a100-1h",
+    "max_price": 100000000,
+    "asset_type": "compute",
+    "delivery_requirements": {
+      "method": "api",
+      "deadline": 1800000000,
+      "verification": "automatic",
+      "details": "GPU compute access via API endpoint",
+      "required_by": 1800000000,
+      "available_by": 1800000000
+    },
+    "payment_token": "SOL",
+    "deadlines": {
+      "delivery": 1800000000,
+      "payment": 1800000000,
+      "dispute_window": 1800000000,
+      "expiration": 1800000000
+    },
+    "cancellation_policy": {
+      "buyer_can_cancel": true,
+      "seller_can_cancel": true,
+      "cancellation_window_seconds": 3600,
+      "refund_policy": "full",
+      "penalty_basis_points": 0
+    },
+    "settlement_conditions": {
+      "auto_release_on_delivery": true,
+      "require_buyer_confirmation": true,
+      "dispute_resolution": "mutual",
+      "preimage_reveal_required": false
+    },
+    "marketplace_id": "finality-marketplace-v1",
+    "negotiation_id": "integration-test-001"
+  },
+  "seller_offer": {
+    "seller": "2ve5JujWUeuVB2NsHagMHhcS9H9HYyiDis9gUgsMwh2m",
+    "asset": "gpu-a100-1h",
+    "min_price": 100000000,
+    "asset_type": "compute",
+    "delivery_requirements": {
+      "method": "api",
+      "deadline": 1800000000,
+      "verification": "automatic",
+      "details": "GPU compute access via API endpoint",
+      "required_by": 1800000000,
+      "available_by": 1800000000
+    },
+    "payment_token": "SOL",
+    "deadlines": {
+      "delivery": 1800000000,
+      "payment": 1800000000,
+      "dispute_window": 1800000000,
+      "expiration": 1800000000
+    },
+    "cancellation_policy": {
+      "buyer_can_cancel": true,
+      "seller_can_cancel": true,
+      "cancellation_window_seconds": 3600,
+      "refund_policy": "full",
+      "penalty_basis_points": 0
+    },
+    "settlement_conditions": {
+      "auto_release_on_delivery": true,
+      "require_buyer_confirmation": true,
+      "dispute_resolution": "mutual",
+      "preimage_reveal_required": false
+    },
+    "marketplace_id": "finality-marketplace-v1",
+    "negotiation_id": "integration-test-001"
+  },
+  "agreement": {
+    "price": 100000000,
+    "asset": "gpu-a100-1h",
+    "asset_type": "compute",
+    "delivery_requirements": {
+      "method": "api",
+      "deadline": 1800000000,
+      "verification": "automatic",
+      "details": "Buyer: GPU compute access via API endpoint; Seller: GPU compute access via API endpoint"
+    },
+    "payment_amount": 100000000,
+    "payment_token": "SOL",
+    "deadlines": {
+      "delivery": 1800000000,
+      "payment": 1800000000,
+      "dispute_window": 1800000000,
+      "expiration": 1800000000
+    },
+    "cancellation_policy": {
+      "buyer_can_cancel": true,
+      "seller_can_cancel": true,
+      "cancellation_window_seconds": 3600,
+      "refund_policy": "full",
+      "penalty_basis_points": 0
+    },
+    "settlement_conditions": {
+      "auto_release_on_delivery": true,
+      "require_buyer_confirmation": true,
+      "dispute_resolution": "mutual",
+      "preimage_reveal_required": false
+    },
+    "buyer": "DcX5q52VJeRpZZfoX4fk6sqGpxGsQkAFCWuTJyg5WY3X",
+    "seller": "2ve5JujWUeuVB2NsHagMHhcS9H9HYyiDis9gUgsMwh2m",
+    "marketplace_id": "finality-marketplace-v1",
+    "negotiation_id": "integration-test-001",
+    "timestamp": 1786054292,
+    "version": 1,
+    "additional_clauses": {
+      "note": "Negotiated via deterministic fallback (LLM unavailable)",
+      "price_method": "split_difference",
+      "rounds": 2
+    },
+    "negotiation_log": [
+      {
+        "round": 1,
+        "buyer_position": {
+          "price": 100000000,
+          "note": "Initial max price"
+        },
+        "seller_position": {
+          "price": 100000000,
+          "note": "Initial min price"
+        },
+        "outcome": "counter"
+      },
+      {
+        "round": 2,
+        "buyer_position": {
+          "price": 100000000,
+          "note": "Accepted midpoint"
+        },
+        "seller_position": {
+          "price": 100000000,
+          "note": "Accepted midpoint"
+        },
+        "outcome": "accepted"
+      }
+    ],
+    "agreement_hash": "99b199a9cef1ce891c472241a408b39424360999feea1e8cc8e05027d024661c"
+  },
+  "agreement_hash": "99b199a9cef1ce891c472241a408b39424360999feea1e8cc8e05027d024661c",
+  "negotiation_log": [
+    {
+      "round": 1,
+      "buyer_position": {
+        "price": 100000000,
+        "note": "Initial max price"
+      },
+      "seller_position": {
+        "price": 100000000,
+        "note": "Initial min price"
+      },
+      "outcome": "counter"
+    },
+    {
+      "round": 2,
+      "buyer_position": {
+        "price": 100000000,
+        "note": "Accepted midpoint"
+      },
+      "seller_position": {
+        "price": 100000000,
+        "note": "Accepted midpoint"
+      },
+      "outcome": "accepted"
+    }
+  ],
+  "status": "success",
+  "created_at": "2026-08-06T22:11:32.669001"
+}

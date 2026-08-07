@@ -1,0 +1,24 @@
+{
+  "settlement_id": "settlement_negotiation_test_456_1785918988_failed_e74f54b3",
+  "escrow_id": "negotiation_test_456",
+  "escrow_address": "EscrowAddressHere123456789",
+  "action": "cancel",
+  "transaction_signature": null,
+  "final_escrow_status": "failed",
+  "on_chain_status_before": "Pending",
+  "settlement_timestamp": 1785918988,
+  "settlement_timestamp_iso": "2026-08-05T08:36:28",
+  "error": "Script execution failed: \n\u274c Error cancelling escrow:\n   Non-base58 character\n   Error: Non-base58 character\n    at Object.decode (/mnt/c/Users/Tejas/finality/solana/escrow-sdk/node_modules/@solana/web3.js/node_modules/base-x/src/index.js:115:11)\n    at new PublicKey (/mnt/c/Users/Tejas/finality/solana/escrow-sdk/node_modules/@solana/web3.js/src/publickey.ts:63:30)\n    at main (/mnt/c/Users/Tejas/finality/solana/escrow-sdk/settlement_script.js:19:24)\n    at Object.<anonymous> (/mnt/c/Users/Tejas/finality/solana/escrow-sdk/settlement_script.js:109:1)\n    at Module._compile (node:internal/modules/cjs/loader:1529:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)\n    at Object.require.extensions.<computed> [as .js] (/mnt/c/Users/Tejas/finality/solana/escrow-sdk/node_modules/ts-node/src/index.ts:1608:43)\n    at Module.load (node:internal/modules/cjs/loader:1275:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:1096:12)\n    at cjsLoader (node:internal/modules/esm/translators:298:15)\n\nOutput: \u274c Cancelling Escrow\n\n==================================================\n---ERROR---\n{\"error\":\"Non-base58 character\"}\n",
+  "metadata": {
+    "buyer": "BuyerPublicKeyHere123456789",
+    "seller": "SellerPublicKeyHere123456789",
+    "amount": 1000000000,
+    "is_sol": true,
+    "token_mint": null,
+    "agreement_hash": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+    "expires_at": 1767225600,
+    "decision_reason": "Escrow expired, cancelling and refunding buyer",
+    "forced": false,
+    "error_status": "execution_error"
+  }
+}

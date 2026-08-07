@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Verify Delivery Input",
+  "type": "object",
+  "required": ["negotiation_id", "delivery_evidence"],
+  "properties": {
+    "negotiation_id": {
+      "type": "string",
+      "description": "Unique negotiation session ID"
+    },
+    "escrow_pda": {
+      "type": "string",
+      "description": "Escrow PDA address (optional, can be derived from buyer key)"
+    },
+    "delivery_evidence": {
+      "type": "object",
+      "required": ["method", "verification", "submitted_at"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["digital", "physical", "api"],
+          "description": "Delivery method used"
+        },
+        "verification": {
+          "type": "string",
+          "enum": ["automatic", "manual", "zk_proof"],
+          "description": "Verification method used"
+        },
+        "submitted_at": {
+          "type": "number",
+          "description": "Unix timestamp when delivery was submitted",
+          "minimum": 1
+        },
+        "details": {
+          "type": "string",
+          "description": "Delivery details and evidence description"
+        },
+        "proof_hash": {
+          "type": "string",
+          "description": "Hash of delivery proof (optional for automatic verification)"
+        },
+        "verifier_info": {
+          "type": "string",
+          "description": "Verifier information (for manual/zk_proof verification)"
+        }
+      }
+    },
+    "buyer_confirmation": {
+      "type": "object",
+      "description": "Explicit buyer approval (will be requested if not provided)",
+      "properties": {
+        "approved": {
+          "type": "boolean",
+          "description": "Whether buyer approves the delivery"
+        },
+        "approved_at": {
+          "type": "number",
+          "description": "Unix timestamp of buyer approval",
+          "minimum": 1
+        },
+        "buyer_signature": {
+          "type": "string",
+          "description": "Buyer's signature confirming approval (base58 encoded)"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Buyer's notes about the delivery"
+        }
+      }
+    },
+    "force_verification": {
+      "type": "boolean",
+      "default": false,
+      "description": "Force verification even if escrow status is not Pending"
+    }
+  }
+}

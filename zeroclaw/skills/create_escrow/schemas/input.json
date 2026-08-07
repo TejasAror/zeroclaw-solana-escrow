@@ -1,0 +1,235 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Create Escrow Input",
+  "type": "object",
+  "required": ["agreement", "agreement_hash", "human_approval", "buyer_keypair"],
+  "properties": {
+    "agreement": {
+      "type": "object",
+      "required": ["price", "asset", "asset_type", "delivery_requirements", "payment_amount", "payment_token", "deadlines", "cancellation_policy", "settlement_conditions", "buyer", "seller", "marketplace_id", "negotiation_id", "timestamp", "version"],
+      "properties": {
+        "price": {
+          "type": "number",
+          "description": "Final agreed price in base units (lamports for SOL, raw units for SPL)",
+          "minimum": 1
+        },
+        "asset": {
+          "type": "string",
+          "description": "Asset/service identifier (e.g., \"gpu-a100-1h\", \"api-calls-1000\")",
+          "minLength": 1
+        },
+        "asset_type": {
+          "type": "string",
+          "enum": ["service", "digital_good", "physical_good", "compute"],
+          "description": "Type of asset being purchased"
+        },
+        "delivery_requirements": {
+          "type": "object",
+          "required": ["method", "deadline", "verification", "details"],
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": ["digital", "physical", "api"],
+              "description": "Delivery method"
+            },
+            "deadline": {
+              "type": "number",
+              "description": "Unix timestamp for delivery deadline",
+              "minimum": 1
+            },
+            "verification": {
+              "type": "string",
+              "enum": ["automatic", "manual", "zk_proof"],
+              "description": "Verification method"
+            },
+            "details": {
+              "type": "string",
+              "description": "Delivery details"
+            }
+          }
+        },
+        "payment_amount": {
+          "type": "number",
+          "description": "Total payment amount in base units",
+          "minimum": 1
+        },
+        "payment_token": {
+          "type": "string",
+          "description": "Token mint address or 'SOL' for native SOL"
+        },
+        "deadlines": {
+          "type": "object",
+          "required": ["delivery", "payment", "dispute_window", "expiration"],
+          "properties": {
+            "delivery": {
+              "type": "number",
+              "description": "Delivery deadline timestamp",
+              "minimum": 1
+            },
+            "payment": {
+              "type": "number",
+              "description": "Payment deadline timestamp",
+              "minimum": 1
+            },
+            "dispute_window": {
+              "type": "number",
+              "description": "Dispute window end timestamp",
+              "minimum": 1
+            },
+            "expiration": {
+              "type": "number",
+              "description": "Agreement expiration timestamp",
+              "minimum": 1
+            }
+          }
+        },
+        "cancellation_policy": {
+          "type": "object",
+          "required": ["buyer_can_cancel", "seller_can_cancel", "cancellation_window_seconds", "refund_policy", "penalty_basis_points"],
+          "properties": {
+            "buyer_can_cancel": {
+              "type": "boolean"
+            },
+            "seller_can_cancel": {
+              "type": "boolean"
+            },
+            "cancellation_window_seconds": {
+              "type": "number",
+              "minimum": 0
+            },
+            "refund_policy": {
+              "type": "string",
+              "enum": ["full", "partial", "none"]
+            },
+            "penalty_basis_points": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000
+            }
+          }
+        },
+        "settlement_conditions": {
+          "type": "object",
+          "required": ["auto_release_on_delivery", "require_buyer_confirmation", "dispute_resolution", "preimage_reveal_required"],
+          "properties": {
+            "auto_release_on_delivery": {
+              "type": "boolean"
+            },
+            "require_buyer_confirmation": {
+              "type": "boolean"
+            },
+            "dispute_resolution": {
+              "type": "string",
+              "enum": ["mutual", "arbitration", "platform"]
+            },
+            "preimage_reveal_required": {
+              "type": "boolean"
+            }
+          }
+        },
+        "buyer": {
+          "type": "string",
+          "description": "Buyer public key (base58)",
+          "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+        },
+        "seller": {
+          "type": "string",
+          "description": "Seller public key (base58)",
+          "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+        },
+        "marketplace_id": {
+          "type": "string",
+          "description": "Marketplace identifier"
+        },
+        "negotiation_id": {
+          "type": "string",
+          "description": "Negotiation session ID"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Unix timestamp when agreement finalized",
+          "minimum": 1
+        },
+        "version": {
+          "type": "number",
+          "description": "Agreement schema version",
+          "const": 1
+        }
+      }
+    },
+    "agreement_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of the deterministic agreement (hex encoded, 64 chars)",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "human_approval": {
+      "type": "object",
+      "required": ["approved", "approver", "timestamp", "signature"],
+      "properties": {
+        "approved": {
+          "type": "boolean",
+          "description": "Whether human approved the escrow creation"
+        },
+        "approver": {
+          "type": "string",
+          "description": "Identifier of the human approver"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Unix timestamp of approval",
+          "minimum": 1
+        },
+        "signature": {
+          "type": "string",
+          "description": "Digital signature or approval token from human"
+        }
+      }
+    },
+    "buyer_keypair": {
+      "type": "object",
+      "required": ["publicKey", "secretKey"],
+      "description": "Buyer's keypair for signing the escrow initialization transaction",
+      "properties": {
+        "publicKey": {
+          "type": "string",
+          "description": "Buyer's public key (base58)"
+        },
+        "secretKey": {
+          "type": "array",
+          "description": "Buyer's secret key as byte array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "minItems": 32,
+          "maxItems": 64
+        }
+      }
+    },
+    "cluster": {
+      "type": "string",
+      "description": "Solana cluster to use",
+      "enum": ["devnet", "mainnet", "testnet", "localnet"],
+      "default": "devnet"
+    },
+    "rpc_url": {
+      "type": "string",
+      "description": "Custom RPC URL (overrides cluster)"
+    },
+    "compute_budget": {
+      "type": "object",
+      "description": "Optional compute budget configuration",
+      "properties": {
+        "units": {
+          "type": "number",
+          "description": "Compute unit limit"
+        },
+        "price": {
+          "type": "number",
+          "description": "Compute unit price in microlamports"
+        }
+      }
+    }
+  }
+}

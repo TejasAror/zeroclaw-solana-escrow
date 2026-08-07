@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Verify Delivery Output",
+  "type": "object",
+  "required": ["status", "escrow_status", "verification_result"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "failed", "validation_error", "buyer_rejected", "evidence_mismatch", "escrow_not_found", "escrow_expired", "unauthorized", "already_approved"],
+      "description": "Verification outcome status"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error message if verification failed"
+    },
+    "escrow_status": {
+      "type": "string",
+      "enum": ["Pending", "Approved", "Released", "Cancelled", "Expired"],
+      "description": "Current escrow status after verification"
+    },
+    "previous_escrow_status": {
+      "type": "string",
+      "enum": ["Pending", "Approved", "Released", "Cancelled", "Expired"],
+      "description": "Escrow status before verification"
+    },
+    "verification_result": {
+      "type": "object",
+      "required": ["delivery_verified", "conditions_met", "buyer_approved"],
+      "properties": {
+        "delivery_verified": {
+          "type": "boolean",
+          "description": "Whether delivery evidence matches agreed requirements"
+        },
+        "conditions_met": {
+          "type": "boolean",
+          "description": "Whether all settlement conditions are satisfied"
+        },
+        "buyer_approved": {
+          "type": "boolean",
+          "description": "Whether buyer explicitly approved the delivery"
+        },
+        "evidence_checks": {
+          "type": "object",
+          "description": "Detailed checks performed on delivery evidence",
+          "properties": {
+            "method_matches": { "type": "boolean" },
+            "verification_matches": { "type": "boolean" },
+            "deadline_met": { "type": "boolean" },
+            "proof_valid": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "transaction": {
+      "type": "object",
+      "description": "Transaction details if approveDelivery was called",
+      "properties": {
+        "signature": {
+          "type": "string",
+          "description": "Transaction signature (base58)"
+        },
+        "slot": {
+          "type": "number",
+          "description": "Slot when transaction was confirmed"
+        },
+        "fee": {
+          "type": "number",
+          "description": "Transaction fee in lamports"
+        },
+        "explorer_url": {
+          "type": "string",
+          "description": "Solana Explorer URL for the transaction"
+        }
+      }
+    },
+    "escrow_details": {
+      "type": "object",
+      "description": "Updated escrow account details",
+      "properties": {
+        "escrow_pda": { "type": "string" },
+        "buyer": { "type": "string" },
+        "seller": { "type": "string" },
+        "amount": { "type": "number" },
+        "is_sol": { "type": "boolean" },
+        "token_mint": { "type": "string" },
+        "agreement_hash": { "type": "string" },
+        "expires_at": { "type": "number" }
+      }
+    },
+    "negotiation_id": {
+      "type": "string",
+      "description": "Negotiation session ID"
+    },
+    "timestamp": {
+      "type": "number",
+      "description": "Unix timestamp when verification completed"
+    }
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Negotiate Contract Input",
+  "type": "object",
+  "required": ["buyer_request", "seller_offer"],
+  "properties": {
+    "buyer_request": {
+      "type": "object",
+      "required": ["buyer", "asset", "max_price", "asset_type", "delivery_requirements", "payment_token", "deadlines", "cancellation_policy", "settlement_conditions", "marketplace_id", "negotiation_id"],
+      "properties": {
+        "buyer": {
+          "type": "string",
+          "description": "Buyer public key (base58)",
+          "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+        },
+        "asset": {
+          "type": "string",
+          "description": "Asset/service identifier",
+          "minLength": 1
+        },
+        "asset_type": {
+          "type": "string",
+          "enum": ["service", "digital_good", "physical_good", "compute"],
+          "description": "Type of asset being purchased"
+        },
+        "max_price": {
+          "type": "number",
+          "description": "Maximum price buyer is willing to pay (in base units)",
+          "minimum": 1
+        },
+        "delivery_requirements": {
+          "type": "object",
+          "required": ["method", "required_by", "verification"],
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": ["digital", "physical", "api"],
+              "description": "Delivery method"
+            },
+            "required_by": {
+              "type": "number",
+              "description": "Unix timestamp by which delivery must complete",
+              "minimum": 1
+            },
+            "verification": {
+              "type": "string",
+              "enum": ["automatic", "manual", "zk_proof"],
+              "description": "Verification method for delivery"
+            },
+            "details": {
+              "type": "string",
+              "description": "Additional delivery details"
+            }
+          }
+        },
+        "payment_token": {
+          "type": "string",
+          "description": "Token mint address or 'SOL' for native SOL"
+        },
+        "deadlines": {
+          "type": "object",
+          "required": ["payment", "dispute_window"],
+          "properties": {
+            "payment": {
+              "type": "number",
+              "description": "Unix timestamp by which payment must be made",
+              "minimum": 1
+            },
+            "dispute_window": {
+              "type": "number",
+              "description": "Unix timestamp until which disputes can be raised",
+              "minimum": 1
+            },
+            "expiration": {
+              "type": "number",
+              "description": "Unix timestamp when offer expires",
+              "minimum": 1
+            }
+          }
+        },
+        "cancellation_policy": {
+          "type": "object",
+          "required": ["buyer_can_cancel", "seller_can_cancel", "cancellation_window_seconds", "refund_policy", "penalty_basis_points"],
+          "properties": {
+            "buyer_can_cancel": {
+              "type": "boolean",
+              "description": "Whether buyer can cancel"
+            },
+            "seller_can_cancel": {
+              "type": "boolean",
+              "description": "Whether seller can cancel"
+            },
+            "cancellation_window_seconds": {
+              "type": "number",
+              "description": "Time window in seconds after agreement for cancellation",
+              "minimum": 0
+            },
+            "refund_policy": {
+              "type": "string",
+              "enum": ["full", "partial", "none"],
+              "description": "Refund policy on cancellation"
+            },
+            "penalty_basis_points": {
+              "type": "number",
+              "description": "Penalty in basis points (1/10000) for cancellation",
+              "minimum": 0,
+              "maximum": 10000
+            }
+          }
+        },
+        "settlement_conditions": {
+          "type": "object",
+          "required": ["auto_release_on_delivery", "require_buyer_confirmation", "dispute_resolution", "preimage_reveal_required"],
+          "properties": {
+            "auto_release_on_delivery": {
+              "type": "boolean",
+              "description": "Auto-release funds on delivery confirmation"
+            },
+            "require_buyer_confirmation": {
+              "type": "boolean",
+              "description": "Require explicit buyer confirmation before release"
+            },
+            "dispute_resolution": {
+              "type": "string",
+              "enum": ["mutual", "arbitration", "platform"],
+              "description": "Dispute resolution mechanism"
+            },
+            "preimage_reveal_required": {
+              "type": "boolean",
+              "description": "Require HTLC preimage reveal for release"
+            }
+          }
+        },
+        "marketplace_id": {
+          "type": "string",
+          "description": "Marketplace identifier"
+        },
+        "negotiation_id": {
+          "type": "string",
+          "description": "Unique negotiation session ID"
+        }
+      }
+    },
+    "seller_offer": {
+      "type": "object",
+      "required": ["seller", "asset", "min_price", "asset_type", "delivery_requirements", "payment_token", "deadlines", "cancellation_policy", "settlement_conditions", "marketplace_id", "negotiation_id"],
+      "properties": {
+        "seller": {
+          "type": "string",
+          "description": "Seller public key (base58)",
+          "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+        },
+        "asset": {
+          "type": "string",
+          "description": "Asset/service identifier",
+          "minLength": 1
+        },
+        "asset_type": {
+          "type": "string",
+          "enum": ["service", "digital_good", "physical_good", "compute"],
+          "description": "Type of asset being sold"
+        },
+        "min_price": {
+          "type": "number",
+          "description": "Minimum price seller will accept (in base units)",
+          "minimum": 1
+        },
+        "delivery_requirements": {
+          "type": "object",
+          "required": ["method", "available_by", "verification"],
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": ["digital", "physical", "api"],
+              "description": "Delivery method"
+            },
+            "available_by": {
+              "type": "number",
+              "description": "Unix timestamp by which seller can deliver",
+              "minimum": 1
+            },
+            "verification": {
+              "type": "string",
+              "enum": ["automatic", "manual", "zk_proof"],
+              "description": "Verification method for delivery"
+            },
+            "details": {
+              "type": "string",
+              "description": "Additional delivery details"
+            }
+          }
+        },
+        "payment_token": {
+          "type": "string",
+          "description": "Token mint address or 'SOL' for native SOL"
+        },
+        "deadlines": {
+          "type": "object",
+          "required": ["payment", "dispute_window"],
+          "properties": {
+            "payment": {
+              "type": "number",
+              "description": "Unix timestamp by which payment must be made",
+              "minimum": 1
+            },
+            "dispute_window": {
+              "type": "number",
+              "description": "Unix timestamp until which disputes can be raised",
+              "minimum": 1
+            },
+            "expiration": {
+              "type": "number",
+              "description": "Unix timestamp when offer expires",
+              "minimum": 1
+            }
+          }
+        },
+        "cancellation_policy": {
+          "type": "object",
+          "required": ["buyer_can_cancel", "seller_can_cancel", "cancellation_window_seconds", "refund_policy", "penalty_basis_points"],
+          "properties": {
+            "buyer_can_cancel": {
+              "type": "boolean",
+              "description": "Whether buyer can cancel"
+            },
+            "seller_can_cancel": {
+              "type": "boolean",
+              "description": "Whether seller can cancel"
+            },
+            "cancellation_window_seconds": {
+              "type": "number",
+              "description": "Time window in seconds after agreement for cancellation",
+              "minimum": 0
+            },
+            "refund_policy": {
+              "type": "string",
+              "enum": ["full", "partial", "none"],
+              "description": "Refund policy on cancellation"
+            },
+            "penalty_basis_points": {
+              "type": "number",
+              "description": "Penalty in basis points (1/10000) for cancellation",
+              "minimum": 0,
+              "maximum": 10000
+            }
+          }
+        },
+        "settlement_conditions": {
+          "type": "object",
+          "required": ["auto_release_on_delivery", "require_buyer_confirmation", "dispute_resolution", "preimage_reveal_required"],
+          "properties": {
+            "auto_release_on_delivery": {
+              "type": "boolean",
+              "description": "Auto-release funds on delivery confirmation"
+            },
+            "require_buyer_confirmation": {
+              "type": "boolean",
+              "description": "Require explicit buyer confirmation before release"
+            },
+            "dispute_resolution": {
+              "type": "string",
+              "enum": ["mutual", "arbitration", "platform"],
+              "description": "Dispute resolution mechanism"
+            },
+            "preimage_reveal_required": {
+              "type": "boolean",
+              "description": "Require HTLC preimage reveal for release"
+            }
+          }
+        },
+        "marketplace_id": {
+          "type": "string",
+          "description": "Marketplace identifier"
+        },
+        "negotiation_id": {
+          "type": "string",
+          "description": "Unique negotiation session ID"
+        }
+      }
+    }
+  }
+}

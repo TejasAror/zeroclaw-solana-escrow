@@ -1,0 +1,41 @@
+{
+  "verification_id": "verification_neg-2024-08-05-001_1785974794_failed",
+  "negotiation_id": "neg-2024-08-05-001",
+  "escrow_address": "EscrowAddressHere123456789",
+  "action": "approve_delivery",
+  "transaction_signature": null,
+  "previous_status": "Pending",
+  "new_status": "failed",
+  "verification_timestamp": 1785974794,
+  "verification_timestamp_iso": "2026-08-06T00:06:34",
+  "error": "Script execution failed: \n\u274c Error approving delivery:\n   Invalid public key input\n   Error: Invalid public key input\n    at new PublicKey (/mnt/c/Users/Tejas/finality/solana/escrow-sdk/node_modules/@solana/web3.js/lib/index.cjs.js:172:17)\n    at main (/mnt/c/Users/Tejas/finality/solana/escrow-sdk/verify_delivery_script.js:19:31)\n    at Object.<anonymous> (/mnt/c/Users/Tejas/finality/solana/escrow-sdk/verify_delivery_script.js:102:1)\n    at Module._compile (node:internal/modules/cjs/loader:1529:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)\n    at Module.load (node:internal/modules/cjs/loader:1275:32)\n    at Module._load (node:internal/modules/cjs/loader:1096:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49\n\nOutput: \u2705 Approving Delivery for Escrow\n\n==================================================\n---ERROR---\n{\"error\":\"Invalid public key input\"}\n",
+  "error_status": "execution_error",
+  "metadata": {
+    "buyer": "shaK3ufmCdHfjdqntZX1EJc56UXnDg4gqs8wLchumHD",
+    "seller": "9vLzRq9NfP2GmJ7QwE8YxK4VcT3WbHsN1M6uP5jR2sAq",
+    "amount": 500000000,
+    "is_sol": true,
+    "token_mint": null,
+    "agreement_hash": "10c150844cb933e197743da39559d099c5fbf84a27f88d87622a644811f82b09",
+    "expires_at": 1800000000,
+    "delivery_evidence": {
+      "method": "api",
+      "verification": "automatic",
+      "submitted_at": 1785917160,
+      "details": "GPU compute access delivered via API endpoint as agreed",
+      "proof_hash": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456"
+    },
+    "evidence_checks": {
+      "method_matches": true,
+      "verification_matches": true,
+      "deadline_met": true,
+      "proof_valid": true
+    },
+    "buyer_approval": {
+      "approved_at": 1785917200,
+      "buyer_signature": "buyer_approval_sig_xyz789",
+      "notes": "Delivery verified, GPU access confirmed working"
+    },
+    "conditions_met": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "negotiation_id": "neg-2024-08-05-001",
+  "delivery_evidence": {
+    "method": "api",
+    "verification": "automatic",
+    "submitted_at": 1785917160,
+    "details": "GPU compute access delivered via API endpoint as agreed",
+    "proof_hash": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456"
+  },
+  "force_verification": false,
+  "buyer_keypair_path": "/tmp/test_buyer_keypair.json"
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Create Escrow Output",
+  "type": "object",
+  "required": ["success", "escrow_pda", "transaction_signature", "agreement_hash", "amount", "buyer", "seller", "escrow_status", "created_at"],
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "description": "Whether escrow creation succeeded"
+    },
+    "escrow_pda": {
+      "type": "string",
+      "description": "Program Derived Address of the escrow account (base58)",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "transaction_signature": {
+      "type": "string",
+      "description": "Transaction signature of the initialize escrow transaction",
+      "minLength": 64
+    },
+    "agreement_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of the agreement (hex encoded, 64 chars)",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Escrow amount in base units (lamports for SOL)",
+      "minimum": 1
+    },
+    "buyer": {
+      "type": "string",
+      "description": "Buyer public key (base58)",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "seller": {
+      "type": "string",
+      "description": "Seller public key (base58)",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "escrow_status": {
+      "type": "string",
+      "enum": ["Pending", "Approved", "Released", "Cancelled", "Expired"],
+      "description": "Current escrow status on-chain"
+    },
+    "vault_address": {
+      "type": "string",
+      "description": "Vault PDA address (base58)",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "token_vault_address": {
+      "type": ["string", "null"],
+      "description": "Token vault PDA address for SPL escrows, null for SOL",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "token_mint": {
+      "type": ["string", "null"],
+      "description": "Token mint address for SPL escrows, null for SOL",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "expires_at": {
+      "type": ["number", "null"],
+      "description": "Unix timestamp when escrow expires",
+      "minimum": 1
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when escrow was created"
+    },
+    "slot": {
+      "type": "number",
+      "description": "Solana slot when transaction was confirmed",
+      "minimum": 0
+    },
+    "confirmations": {
+      "type": ["number", "null"],
+      "description": "Number of confirmations",
+      "minimum": 0
+    },
+    "error_message": {
+      "type": ["string", "null"],
+      "description": "Error message if escrow creation failed"
+    },
+    "error_code": {
+      "type": ["string", "null"],
+      "description": "Error code for programmatic handling"
+    },
+    "memory_stored": {
+      "type": "boolean",
+      "description": "Whether escrow data was successfully stored in ZeroClaw memory"
+    }
+  }
+}

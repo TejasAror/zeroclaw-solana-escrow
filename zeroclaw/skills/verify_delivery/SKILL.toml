@@ -1,0 +1,26 @@
+[skill]
+name = "verify_delivery"
+version = "1.0.0"
+description = "Verify delivery completion, collect evidence, request buyer approval, and call approveDelivery() on the escrow program"
+category = "zeroclaw"
+author = "Hermes Agent"
+license = "MIT"
+
+[skill.metadata]
+tags = ["verify", "delivery", "escrow", "approve", "zeroclaw", "solana"]
+related_skills = ["create_escrow", "negotiate_contract", "settle_escrow"]
+
+[skill.input]
+schema = "schemas/input.json"
+description = "Escrow verification request with negotiation ID and delivery evidence"
+
+[skill.output]
+schema = "schemas/output.json"
+description = "Verification result with transaction signature and updated escrow status"
+
+[skill.prompts]
+system = "prompts/system.md"
+
+[skill.memory]
+namespace = "escrows"
+retention_days = 90

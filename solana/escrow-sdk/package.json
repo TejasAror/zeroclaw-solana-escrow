@@ -1,0 +1,64 @@
+{
+  "name": "@finality/escrow-sdk",
+  "version": "1.0.0",
+  "description": "Production-ready TypeScript SDK for the Solana Escrow program on Devnet",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run build",
+    "example:init": "ts-node examples/initialize-escrow.ts",
+    "example:approve": "ts-node examples/approve-delivery.ts",
+    "example:release": "ts-node examples/release-funds.ts",
+    "example:cancel": "ts-node examples/cancel-escrow.ts",
+    "example:fetch": "ts-node examples/fetch-escrow.ts",
+    "example:full": "ts-node examples/full-cycle.ts"
+  },
+  "keywords": [
+    "solana",
+    "escrow",
+    "anchor",
+    "sdk",
+    "devnet",
+    "web3",
+    "blockchain",
+    "smart-contract"
+  ],
+  "author": "Finality Labs",
+  "license": "MIT",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.29.0",
+    "@solana/web3.js": "^1.91.0",
+    "@solana/spl-token": "^0.4.0",
+    "bs58": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finality-labs/escrow-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/finality-labs/escrow-sdk/issues"
+  },
+  "homepage": "https://github.com/finality-labs/escrow-sdk#readme"
+}

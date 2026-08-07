@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Settle Escrow Input",
+  "type": "object",
+  "required": ["escrow_id"],
+  "properties": {
+    "escrow_id": {
+      "type": "string",
+      "description": "Unique escrow identifier (negotiation_id or escrow address)",
+      "minLength": 1
+    },
+    "buyer_keypair_path": {
+      "type": "string",
+      "description": "Path to buyer's keypair JSON file for signing transactions",
+      "minLength": 1
+    },
+    "force_action": {
+      "type": "string",
+      "enum": ["release", "cancel"],
+      "description": "Optional: Force a specific action regardless of escrow state (use with caution)"
+    }
+  }
+}

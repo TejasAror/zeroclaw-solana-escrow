@@ -1,0 +1,89 @@
+{
+  "agreement": {
+    "price": 100000000,
+    "asset": "gpu-a100-1h",
+    "asset_type": "compute",
+    "delivery_requirements": {
+      "method": "api",
+      "deadline": 1800000000,
+      "verification": "automatic",
+      "details": "Buyer: GPU compute access via API endpoint; Seller: GPU compute access via API endpoint"
+    },
+    "payment_amount": 100000000,
+    "payment_token": "SOL",
+    "deadlines": {
+      "delivery": 1800000000,
+      "payment": 1800000000,
+      "dispute_window": 1800000000,
+      "expiration": 1800000000
+    },
+    "cancellation_policy": {
+      "buyer_can_cancel": true,
+      "seller_can_cancel": true,
+      "cancellation_window_seconds": 3600,
+      "refund_policy": "full",
+      "penalty_basis_points": 0
+    },
+    "settlement_conditions": {
+      "auto_release_on_delivery": true,
+      "require_buyer_confirmation": true,
+      "dispute_resolution": "mutual",
+      "preimage_reveal_required": false
+    },
+    "buyer": "DcX5q52VJeRpZZfoX4fk6sqGpxGsQkAFCWuTJyg5WY3X",
+    "seller": "2ve5JujWUeuVB2NsHagMHhcS9H9HYyiDis9gUgsMwh2m",
+    "marketplace_id": "finality-marketplace-v1",
+    "negotiation_id": "integration-test-001",
+    "timestamp": 1785982644,
+    "version": 1,
+    "additional_clauses": {
+      "note": "Negotiated via deterministic fallback (LLM unavailable)",
+      "price_method": "split_difference",
+      "rounds": 2
+    },
+    "negotiation_log": [
+      {
+        "round": 1,
+        "buyer_position": {
+          "price": 100000000,
+          "note": "Initial max price"
+        },
+        "seller_position": {
+          "price": 100000000,
+          "note": "Initial min price"
+        },
+        "outcome": "counter"
+      },
+      {
+        "round": 2,
+        "buyer_position": {
+          "price": 100000000,
+          "note": "Accepted midpoint"
+        },
+        "seller_position": {
+          "price": 100000000,
+          "note": "Accepted midpoint"
+        },
+        "outcome": "accepted"
+      }
+    ],
+    "agreement_hash": "7127b755d0285766ec324cce1f9b60a74d8ebf710b5a26995dc1501ab5488d72"
+  },
+  "agreement_hash": "7127b755d0285766ec324cce1f9b60a74d8ebf710b5a26995dc1501ab5488d72",
+  "human_approval": {
+    "approved": true,
+    "approver": "integration-test-runner",
+    "timestamp": 1785982700,
+    "signature": "integration-test-approval-sig"
+  },
+  "buyer_keypair": {
+    "publicKey": "DcX5q52VJeRpZZfoX4fk6sqGpxGsQkAFCWuTJyg5WY3X",
+    "secretKey": [229, 229, 10, 207, 34, 165, 236, 250, 245, 51, 51, 152, 46, 16, 144, 144, 214, 116, 191, 103, 193, 17, 200, 73, 175, 197, 126, 62, 183, 7, 52, 183, 187, 101, 150, 48, 145, 97, 171, 19, 131, 52, 13, 155, 32, 187, 8, 255, 86, 135, 42, 192, 83, 251, 44, 194, 91, 255, 133, 119, 208, 16, 172, 150]
+  },
+  "cluster": "devnet",
+  "rpc_url": "https://api.devnet.solana.com",
+  "compute_budget": {
+    "units": 200000,
+    "price": 1000
+  }
+}

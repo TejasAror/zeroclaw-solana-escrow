@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Settle Escrow Output",
+  "type": "object",
+  "required": ["success", "action", "message", "settlement_status"],
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "description": "Whether the settlement operation succeeded"
+    },
+    "action": {
+      "type": "string",
+      "enum": ["release", "cancel", "none", "wait", "failed"],
+      "description": "The action that was taken or attempted"
+    },
+    "message": {
+      "type": "string",
+      "description": "Human-readable message describing the outcome"
+    },
+    "settlement_status": {
+      "type": "string",
+      "enum": ["released", "cancelled", "expired", "pending", "failed", "none"],
+      "description": "Final settlement status"
+    },
+    "transaction_signature": {
+      "type": ["string", "null"],
+      "description": "Solana transaction signature if successful"
+    },
+    "settlement_timestamp": {
+      "type": ["number", "null"],
+      "description": "Unix timestamp when settlement was executed"
+    },
+    "settlement_timestamp_iso": {
+      "type": ["string", "null"],
+      "description": "ISO 8601 timestamp when settlement was executed"
+    },
+    "settlement_id": {
+      "type": ["string", "null"],
+      "description": "Unique settlement record identifier"
+    },
+    "slot": {
+      "type": ["number", "null"],
+      "description": "Solana slot where transaction was confirmed"
+    },
+    "confirmations": {
+      "type": ["number", "null"],
+      "description": "Number of confirmations"
+    },
+    "on_chain_status_before": {
+      "type": ["string", "null"],
+      "description": "Escrow status on-chain before settlement"
+    },
+    "duplicate_prevented": {
+      "type": "boolean",
+      "description": "Whether duplicate settlement was prevented"
+    },
+    "error": {
+      "type": ["string", "null"],
+      "description": "Error message if settlement failed"
+    },
+    "error_status": {
+      "type": ["string", "null"],
+      "description": "Error status code if settlement failed"
+    },
+    "decision": {
+      "type": ["object", "null"],
+      "description": "Decision logic details",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["release", "cancel", "none", "wait"]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "can_proceed": {
+          "type": "boolean"
+        },
+        "current_status": {
+          "type": "string"
+        },
+        "is_expired": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

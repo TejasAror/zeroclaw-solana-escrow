@@ -1,0 +1,30 @@
+[skill]
+name = "create_escrow"
+version = "1.0.0"
+description = "Create on-chain escrow from finalized agreement using production TypeScript Escrow SDK, with human approval gate and ZeroClaw memory persistence"
+category = "zeroclaw"
+author = "Hermes Agent"
+license = "MIT"
+
+[skill.metadata]
+tags = ["escrow", "solana", "blockchain", "typescript", "sdk", "zeroclaw", "human-approval"]
+related_skills = ["negotiate_contract", "settle_escrow", "verify_delivery"]
+
+[skill.input]
+schema = "schemas/input.json"
+description = "Finalized agreement from negotiate_contract with human approval confirmation"
+
+[skill.output]
+schema = "schemas/output.json"
+description = "Escrow creation result with PDA, transaction signature, agreement hash, and status"
+
+[skill.prompts]
+system = "prompts/system.md"
+
+[skill.memory]
+namespace = "escrows"
+retention_days = 90
+
+[skill.dependencies]
+external = ["@solana/web3.js", "@coral-xyz/anchor", "@solana/spl-token", "bs58"]
+local = ["solana/escrow-sdk"]

@@ -1,0 +1,31 @@
+[skill]
+name = "negotiate_contract"
+version = "1.0.0"
+description = "Negotiate and finalize contracts between buyer and seller using LLM, generating deterministic agreements with SHA-256 hashes for on-chain escrow"
+category = "zeroclaw"
+author = "Hermes Agent"
+license = "MIT"
+
+[skill.metadata]
+tags = ["negotiation", "contract", "escrow", "llm", "sha256", "zeroclaw", "agent-commerce"]
+related_skills = ["create_escrow", "settle_escrow", "verify_delivery"]
+
+[skill.input]
+schema = "schemas/input.json"
+description = "Buyer request and seller offer with negotiation parameters"
+
+[skill.output]
+schema = "schemas/output.json"
+description = "Finalized agreement with deterministic hash for escrow creation"
+
+[skill.prompts]
+system = "prompts/system.md"
+
+[skill.memory]
+namespace = "negotiations"
+retention_days = 30
+
+[skill.runtime]
+python_version = "3.10+"
+dependencies = ["hermes_tools"]
+entry_point = "negotiate_contract.py"
