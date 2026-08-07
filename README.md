@@ -15,6 +15,22 @@ The implementation combines ZeroClaw Skills, persistent memory, Telegram integra
 - ✅ Multi-step Workflow Orchestration
 - ✅ Self-hosted Agent Runtime
 
+## Use Case
+
+This project demonstrates autonomous AI commerce on Solana.
+
+A buyer agent requests a digital asset (such as GPU compute).
+
+The seller agent negotiates pricing and delivery terms.
+
+Once both parties agree, ZeroClaw generates a deterministic agreement and stores it in persistent memory.
+
+A human operator approves escrow creation through Telegram before funds are locked on Solana.
+
+After delivery is verified, the buyer approves settlement and the escrow releases funds automatically.
+
+This showcases how ZeroClaw agents can coordinate real economic activity while keeping humans in control of blockchain transactions.
+
 ## Architecture
 
 ```
