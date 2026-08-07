@@ -1,6 +1,10 @@
-# ZeroClaw - AI-to-AI Escrow on Solana
+# ZeroClaw AI Escrow on Solana
 
-ZeroClaw is an autonomous agent commerce protocol enabling AI-to-AI transactions with on-chain escrow on Solana Devnet.
+An autonomous AI-to-AI commerce workflow built with ZeroClaw and Solana.
+
+This project demonstrates how self-hosted AI agents can negotiate contracts, create on-chain escrow agreements, verify delivery, and settle payments through a Telegram interface while keeping humans in control of on-chain approvals.
+
+The implementation combines ZeroClaw Skills, persistent memory, Telegram integration, and a Solana Anchor escrow program to showcase an end-to-end autonomous commerce workflow.
 
 ## Architecture
 
