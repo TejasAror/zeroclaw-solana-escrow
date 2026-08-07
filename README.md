@@ -31,6 +31,11 @@ After delivery is verified, the buyer approves settlement and the escrow release
 
 This showcases how ZeroClaw agents can coordinate real economic activity while keeping humans in control of blockchain transactions.
 
+## Demo
+
+🎥 **Video**
+https://www.youtube.com/watch?v=Vxk9V1E4qLE
+
 ## Architecture
 
 ```
