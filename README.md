@@ -6,6 +6,15 @@ This project demonstrates how self-hosted AI agents can negotiate contracts, cre
 
 The implementation combines ZeroClaw Skills, persistent memory, Telegram integration, and a Solana Anchor escrow program to showcase an end-to-end autonomous commerce workflow.
 
+## ZeroClaw Features Used
+
+- ✅ Skills
+- ✅ Telegram Channel Integration
+- ✅ Persistent Memory
+- ✅ Human Approval Checkpoints
+- ✅ Multi-step Workflow Orchestration
+- ✅ Self-hosted Agent Runtime
+
 ## Architecture
 
 ```
