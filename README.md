@@ -1,5 +1,9 @@
 # ZeroClaw AI Escrow on Solana
 
+![Solana](https://img.shields.io/badge/Solana-Devnet-9945FF)
+![ZeroClaw](https://img.shields.io/badge/ZeroClaw-Skills-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 An autonomous AI-to-AI commerce workflow built with ZeroClaw and Solana.
 
 This project demonstrates how self-hosted AI agents can negotiate contracts, create on-chain escrow agreements, verify delivery, and settle payments through a Telegram interface while keeping humans in control of on-chain approvals.
