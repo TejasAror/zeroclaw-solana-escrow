@@ -61,9 +61,7 @@ import {
 import idlJson from '../idl/escrow_program.json';
 const IDL = idlJson as unknown as Idl;
 
-/**
- * Main client class for interacting with the Solana Escrow program
- */
+
 export class EscrowClient {
   public readonly connection: Connection;
   public readonly program: Program;
@@ -72,16 +70,7 @@ export class EscrowClient {
   public readonly cluster: string;
   public readonly rpcUrl: string;
 
-  /**
-   * Creates a new EscrowClient instance
-   * 
-   * @param config - Client configuration options
-   * @param config.programId - Custom program ID (defaults to Devnet deployment)
-   * @param config.cluster - Cluster to connect to ('devnet', 'mainnet', 'testnet', 'localnet', or custom RPC URL)
-   * @param config.rpcUrl - Custom RPC URL (overrides cluster)
-   * @param config.commitment - Default commitment level
-   * @param config.wallet - Wallet for signing transactions (Keypair, NodeWallet, or Anchor Wallet)
-   */
+  
   constructor(config: EscrowClientConfig = {}) {
     this.programId = config.programId || PROGRAM_ID;
     this.cluster = config.cluster || DEFAULT_CLUSTER;
@@ -114,34 +103,17 @@ export class EscrowClient {
     this.program = new Program(IDL, this.programId, provider);
   }
 
-  /**
-   * Creates an EscrowClient with a keypair for signing
-   * 
-   * @param keypair - The keypair to use for signing
-   * @param config - Additional configuration
-   * @returns New EscrowClient instance
-   */
+  
   static withKeypair(keypair: Keypair, config: Omit<EscrowClientConfig, 'wallet'> = {}): EscrowClient {
     return new EscrowClient({ ...config, wallet: keypair });
   }
 
-  /**
-   * Creates an EscrowClient for read-only operations (no wallet required)
-   * 
-   * @param config - Configuration options
-   * @returns New EscrowClient instance
-   */
+
   static readOnly(config: Omit<EscrowClientConfig, 'wallet'> = {}): EscrowClient {
     return new EscrowClient({ ...config, wallet: null });
   }
 
-  // ============================================================================
-  // PDA Derivation Methods
-  // ============================================================================
-
-  /**
-   * Derives all PDAs for a given buyer
-   */
+  
   async derivePDAs(buyer: PublicKey): Promise<{
     escrow: PublicKey;
     escrowBump: number;
@@ -153,47 +125,27 @@ export class EscrowClient {
     return deriveEscrowPDAs(buyer, this.programId);
   }
 
-  /**
-   * Derives just the escrow PDA for a buyer
-   */
+  
   deriveEscrowAddress(buyer: PublicKey): [PublicKey, number] {
     return deriveEscrowAddress(buyer, this.programId);
   }
 
-  /**
-   * Derives the vault PDA for an escrow
-   */
+ 
   deriveVaultAddress(escrow: PublicKey): [PublicKey, number] {
     return deriveVaultAddress(escrow, this.programId);
   }
 
-  /**
-   * Derives the token vault PDA for an escrow
-   */
+
   deriveTokenVaultAddress(escrow: PublicKey): [PublicKey, number] {
     return deriveTokenVaultAddress(escrow, this.programId);
   }
 
-  /**
-   * Derives the associated token account for a wallet and mint
-   */
+ 
   deriveAssociatedTokenAccount(wallet: PublicKey, mint: PublicKey): PublicKey {
     return deriveAssociatedTokenAccount(wallet, mint);
   }
 
-  // ============================================================================
-  // Core Escrow Operations
-  // ============================================================================
-
-  /**
-   * Initializes a new escrow account
-   * 
-   * @param buyer - The buyer's keypair (signer)
-   * @param seller - The seller's public key
-   * @param params - Escrow initialization parameters
-   * @param computeBudget - Optional compute budget configuration
-   * @returns Transaction result with escrow and vault addresses
-   */
+  
   async initializeEscrow(
     buyer: Keypair,
     seller: PublicKey,
@@ -655,9 +607,7 @@ export class EscrowClient {
     return this.wallet !== null;
   }
 
-  /**
-   * Gets the wallet public key if available
-   */
+
   getWalletPublicKey(): PublicKey | null {
     return this.wallet?.publicKey || null;
   }
