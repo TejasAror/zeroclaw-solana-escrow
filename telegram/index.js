@@ -1,14 +1,4 @@
-/**
- * ZeroClaw Telegram Bot Entry Point
- * 
- * Registers commands for the ZeroClaw AI-to-AI escrow workflow:
- * - /start, /help - Bot information and usage
- * - /negotiate - Negotiate contract between buyer and seller
- * - /escrow - Create on-chain escrow from negotiated agreement
- * - /verify - Verify delivery and approve delivery
- * - /settle - Settle escrow (release funds or cancel)
- * - /status - Check escrow status
- */
+
 const path = require('path');
 
 require('dotenv').config({
